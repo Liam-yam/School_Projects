@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <title>Lotus | Shoe Store</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --lotus-bg: #f7fbfd;
+        --lotus-surface: #d6e6ef;
+        --lotus-purple: #7f16b8;
+        --lotus-purple-dark: #66129a;
+        --lotus-text: #2a3e4b;
+        --lotus-muted: #4f6372;
+
+        --bs-body-bg: var(--lotus-bg);
+        --bs-body-color: var(--lotus-text);
+        --bs-primary: var(--lotus-purple);
+        --bs-primary-rgb: 127, 22, 184;
+        --bs-border-color: var(--lotus-surface);
+        --bs-link-color: var(--lotus-purple);
+        --bs-link-hover-color: var(--lotus-purple-dark);
+
+        --bs-body-font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --bs-body-font-size: 1rem;
+        --bs-body-line-height: 1.6;
+      }
+
+      .btn-primary {
+        --bs-btn-bg: var(--lotus-purple);
+        --bs-btn-border-color: var(--lotus-purple);
+        --bs-btn-hover-bg: var(--lotus-purple-dark);
+        --bs-btn-hover-border-color: var(--lotus-purple-dark);
+        --bs-btn-active-bg: var(--lotus-purple-dark);
+        --bs-btn-active-border-color: var(--lotus-purple-dark);
+        --bs-btn-color: #fff;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-active-color: #fff;
+        --bs-btn-font-weight: 600;
+      }
+
+      h1, h2, h3, .font-display {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 600;
+      }
+      h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); line-height: 1.1; }
+      h2 { font-size: 2.25rem; line-height: 1.2; }
+      h3 { font-size: 1.75rem; line-height: 1.25; }
+      h4 { font-size: 1.375rem; line-height: 1.3; font-weight: 600; }
+      h5 { font-size: 1.125rem; line-height: 1.35; font-weight: 600; }
+      h6 { font-size: 1rem; line-height: 1.4; font-weight: 600; }
+      .caption { font-size: 0.8125rem; line-height: 1.4; }
+      .eyebrow {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--lotus-purple);
+      }
+      .text-muted-lotus { color: var(--lotus-muted); }
+
+      .hero-img {
+        height: 420px;
+        object-fit: cover;
+        border-radius: 2rem;
+      }
+
+      .shoe-img {
+        height: 220px;
+        object-fit: cover;
+      }
+      .card { border-color: var(--lotus-surface); }
+      .icon-box {
+        width: 48px;
+        height: 48px;
+        background: var(--lotus-purple);
+      }
+      .footer-dark { background: var(--lotus-text); color: var(--lotus-bg); }
+      .footer-dark small { color: var(--lotus-surface); }
+
+      @media (max-width: 991.98px) {
+        .hero-img { height: 280px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand border-bottom bg-body">
+      <div class="container">
+        <a class="navbar-brand font-display fs-3 text-primary" href="#">Lotus</a>
+        <ul class="navbar-nav gap-3" id="navLinks">
+        </ul>
+      </div>
+    </nav>
+
+    <header class="container py-5">
+      <div class="row align-items-center g-5 py-lg-4">
+        <div class="col-12 col-lg-6">
+          <div class="eyebrow mb-2">Lotus shoe store</div>
+          <h1 class="mb-3">Step into something real.</h1>
+          <p class="fs-5 text-muted-lotus mb-4">
+            Original pairs from the brands you love, all in one place.
+          </p>
+          <a href="#shoes" class="btn btn-primary btn-lg rounded-pill px-4">Shop now</a>
+        </div>
+        <div class="col-12 col-lg-6">
+          <img
+            src="assets/hero-converse-wall.avif"
+            class="w-100 hero-img shadow"
+            alt="Chuck Taylor sneakers displayed on a store wall"
+          />
+        </div>
+      </div>
+    </header>
+
+    <section id="shoes" class="bg-white py-5">
+      <div class="container">
+        <div class="eyebrow">Shoes</div>
+        <h2 class="mb-4">Fresh pairs</h2>
+        <div class="row" id="parent">
+        </div>
+      </div>
+    </section>
+
+    <section class="container py-5">
+      <div class="row g-5">
+        <div class="col-12 col-lg-6" id="why">
+          <div class="eyebrow">Why us</div>
+          <h2 class="mb-4">Why shop with Lotus</h2>
+          <div id="features">
+          </div>
+        </div>
+        <div class="col-12 col-lg-6" id="brands">
+          <div class="eyebrow">Brands</div>
+          <h2 class="mb-4">Brands we carry</h2>
+          <div class="row g-3" id="brandList">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-dark py-4 text-center">
+      <div class="font-display fs-3">Lotus</div>
+      <small>&copy; Lotus. All rights reserved.</small>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+
+      var navLinks = [
+        {
+          text: "Shoes",
+          url: "#shoes",
+        },
+        {
+          text: "Why us",
+          url: "#why",
+        },
+        {
+          text: "Brands",
+          url: "#brands",
+        },
+      ];
+
+      var elNav = document.getElementById("navLinks");
+
+      for (var i = 0; i < navLinks.length; i++) {
+        elNav.innerHTML +=
+          `<li class="nav-item">
+            <a class="nav-link fw-medium" href="` + navLinks[i].url + `">` + navLinks[i].text + `</a>
+          </li>`;
+      }
+
+
+      var shoes = [
+        {
+          name: "Nike Air Force 1",
+          brand: "Nike",
+          size: 9,
+          price: 5495,
+          stock: 8,
+          image: "assets/nike-air-force-1.avif",
+        },
+        {
+          name: "Nike Dunk Low",
+          brand: "Nike",
+          size: 8,
+          price: 5895,
+          stock: 6,
+          image: "assets/nike-dunk-low.avif",
+        },
+        {
+          name: "Adidas Superstar",
+          brand: "Adidas",
+          size: 9,
+          price: 5500,
+          stock: 10,
+          image: "assets/adidas-superstar.avif",
+        },
+        {
+          name: "Adidas Gazelle",
+          brand: "Adidas",
+          size: 8,
+          price: 6000,
+          stock: 0,
+          image: "assets/adidas-gazelle.avif",
+        },
+        {
+          name: "Converse All Star Black",
+          brand: "Converse",
+          size: 10,
+          price: 4200,
+          stock: 3,
+          image: "assets/converse-all-star-black.avif",
+        },
+        {
+          name: "Converse All Star Yellow",
+          brand: "Converse",
+          size: 9,
+          price: 4200,
+          stock: 5,
+          image: "assets/converse-all-star-yellow.avif",
+        },
+        {
+          name: "New Balance Classic",
+          brand: "New Balance",
+          size: 9,
+          price: 6995,
+          stock: 15,
+          image: "assets/new-balance-classic.avif",
+        },
+        {
+          name: "New Balance Runner",
+          brand: "New Balance",
+          size: 10,
+          price: 6495,
+          stock: 4,
+          image: "assets/new-balance-runner.avif",
+        },
+      ];
+
+      var elParent = document.getElementById("parent");
+
+      for (var i = 0; i < shoes.length; i++) {
+        elParent.innerHTML +=
+          `<div class="col-12 col-sm-6 col-lg-3 my-3">
+          <div class="card h-100 p-3 shadow rounded-4">
+            <img src="` + shoes[i].image + `" class="w-100 shoe-img rounded-3" alt="` + shoes[i].name + `">
+            <div class="caption text-muted-lotus mt-3">` + shoes[i].brand + `</div>
+            <div class="h5">` + shoes[i].name + `</div>
+            <div class="caption">Size: ` + shoes[i].size + `</div>
+            <div class="fw-semibold text-primary fs-5">₱` + shoes[i].price.toLocaleString() + `</div>
+            <div class="caption">Stock: ` + shoes[i].stock + `</div>
+          </div>
+        </div>`;
+      }
+
+      var features = [
+        {
+          title: "Original items",
+          text: "Every pair is 100% authentic. No fakes, no replicas.",
+        },
+      ];
+
+      var elFeatures = document.getElementById("features");
+
+      for (var i = 0; i < features.length; i++) {
+        elFeatures.innerHTML +=
+          `<div class="card p-3 my-3 shadow rounded-4 d-flex flex-row align-items-center gap-3">
+            <div class="icon-box rounded-3 d-flex align-items-center justify-content-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </div>
+            <div>
+              <div class="h5 mb-1">` + features[i].title + `</div>
+              <div class="text-muted-lotus">` + features[i].text + `</div>
+            </div>
+          </div>`;
+      }
+
+      var brands = [
+        {
+          name: "Nike",
+        },
+        {
+          name: "Adidas",
+        },
+        {
+          name: "Converse",
+        },
+        {
+          name: "New Balance",
+        },
+      ];
+
+      var elBrands = document.getElementById("brandList");
+
+      for (var i = 0; i < brands.length; i++) {
+        elBrands.innerHTML +=
+          `<div class="col-6">
+            <div class="card p-3 shadow rounded-4 text-center fw-semibold">` + brands[i].name + `</div>
+          </div>`;
+      }
+    </script>
+  </body>
+</html>
