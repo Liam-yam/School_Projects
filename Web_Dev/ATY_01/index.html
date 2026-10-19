@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-dark">
+<body class="bg-body-secondary">
 
     <!-- container -->
     <main class="container-fluid min-vh-100 p-2 p-sm-3 p-lg-4 d-flex flex-column gap-3">
@@ -17,57 +17,105 @@
         <div class="row g-3 flex-fill">
 
             <!-- Clock -->
-            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-                <div class="h-100 p-4 bg-white rounded-5 shadow-sm d-flex flex-column justify-content-between">
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="h-100 p-4 bg-body rounded-5 shadow-sm d-flex flex-column justify-content-between gap-4">
                     <div>
-                        <div class="small text-uppercase text-body-secondary fw-medium">Today</div>
-                        <div class="fs-5 fw-medium">Saturday, Oct 10</div>
+                        <div class="small text-uppercase text-body-secondary fw-semibold">Good morning</div>
+                        <div class="fs-5 fw-semibold">Saturday, Oct 10</div>
                     </div>
                     <div>
-                        <div class="fw-semibold lh-1" style="font-size: clamp(5rem, 9vw, 9.375rem); letter-spacing: -0.03em;">09</div>
-                        <div class="fw-semibold lh-1" style="font-size: clamp(5rem, 9vw, 9.375rem); letter-spacing: -0.03em;">50</div>
+                        <div class="fw-semibold lh-1" style="font-size: clamp(4.5rem, 7vw, 7rem); letter-spacing: -0.04em;">09</div>
+                        <div class="fw-semibold lh-1" style="font-size: clamp(4.5rem, 7vw, 7rem); letter-spacing: -0.04em;">50</div>
                         <div class="d-flex align-items-center gap-2 pt-3">
                             <span class="p-2 bg-warning rounded-circle"></span>
-                            <span class="fs-3 fw-medium text-body-secondary">PM</span>
+                            <span class="fs-4 fw-semibold text-body-secondary">AM</span>
+                            <span class="ms-auto small text-body-secondary">Week 41</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 p-3 bg-warning-subtle text-warning-emphasis rounded-4">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm7-6V11a7 7 0 0 0-5.5-6.84V3a1.5 1.5 0 0 0-3 0v1.16A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2z"/></svg>
+                        <div class="small lh-sm">
+                            <div class="fw-semibold">Next: Networking Lab</div>
+                            <div>10:00 AM · in 10 min</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Music Player -->
-            <div class="col-12 col-sm-6 col-md-8 col-xl-9">
-                <div class="h-100 p-4 bg-white rounded-5 shadow-sm">
+            <div class="col-12 col-md-6 col-xl-5">
+                <div class="h-100 p-4 text-bg-dark rounded-5 shadow-sm">
                     <div class="row g-4 h-100 align-items-center">
-                        <div class="col-12 col-lg-5 col-xl-4">
+                        <div class="col-12 col-sm-5">
                             <div class="ratio ratio-1x1">
-                                <img src="Daylight.jpg" alt="Daylight album cover" class="rounded-4 object-fit-cover">
+                                <img src="Daylight.jpg" alt="Lover album cover" class="rounded-4 object-fit-cover">
                             </div>
                         </div>
-                        <div class="col-12 col-lg-7 col-xl-8 align-self-stretch d-flex flex-column justify-content-between gap-4">
-                            <div class="small text-uppercase text-body-secondary fw-medium">Now playing</div>
-                            <div>
-                                <div class="display-5 fw-semibold">Daylight</div>
-                                <div class="fs-5 fw-medium text-body-secondary">Taylor Swift</div>
-                                <div class="text-body-secondary">Daylight</div>
+                        <div class="col-12 col-sm-7 align-self-stretch d-flex flex-column justify-content-between gap-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="p-1 bg-warning rounded-circle"></span>
+                                <span class="small text-uppercase text-white-50 fw-semibold">Now playing</span>
                             </div>
                             <div>
-                                <div class="progress bg-dark bg-opacity-10" style="height: 6px;">
+                                <div class="display-6 fw-semibold">Daylight</div>
+                                <div class="fw-medium">Taylor Swift</div>
+                                <div class="small text-white-50">Lover · 2019</div>
+                            </div>
+                            <div>
+                                <div class="progress bg-white bg-opacity-25" style="height: 6px;">
                                     <div class="progress-bar bg-warning" style="width: 25%;"></div>
                                 </div>
-                                <div class="d-flex justify-content-between small fw-medium text-body-secondary mt-2">
+                                <div class="d-flex justify-content-between small text-white-50 mt-2">
                                     <span>1:12</span>
                                     <span>4:53</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-4 mt-3">
-                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="text-body-emphasis"><path d="M19 20L9 12l10-8v16zM4 4h2v16H4z"/></svg>
-                                    <span class="d-inline-flex align-items-center justify-content-center bg-dark text-light rounded-circle" style="width: 64px; height: 64px;">
-                                        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5z"/></svg>
+                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M19 20L9 12l10-8v16zM4 4h2v16H4z"/></svg>
+                                    <span class="d-inline-flex align-items-center justify-content-center bg-warning text-dark rounded-circle" style="width: 56px; height: 56px;">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5z"/></svg>
                                     </span>
-                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="text-body-emphasis"><path d="M5 4l10 8-10 8V4zM18 4h2v16h-2z"/></svg>
+                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4l10 8-10 8V4zM18 4h2v16h-2z"/></svg>
+                                    <span class="ms-auto small text-white-50 d-none d-lg-inline">Up next · Cruel Summer</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Weather -->
+            <div class="col-12 col-xl-4">
+                <div class="h-100 p-4 bg-body rounded-5 shadow-sm d-flex flex-column justify-content-between gap-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                        <span class="fw-semibold">Malvar, Batangas</span>
+                        <span class="text-body-secondary">PH</span>
+                        <span class="ms-auto badge rounded-pill bg-body-secondary text-body-secondary fw-medium">Updated 9:45 AM</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <svg width="80" height="80" viewBox="0 0 96 96" fill="none">
+                            <circle cx="38" cy="38" r="16" class="text-warning" fill="currentColor"/>
+                            <g class="text-warning" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M38 10v6M10 38h6M18 18l4 4M58 18l-4 4M18 58l4-4"/></g>
+                            <path d="M30 76H70a12 12 0 0 0 0-24a18 18 0 0 0-34-4a14 14 0 0 0-6 28z" style="color: var(--bs-gray-400);" fill="currentColor"/>
+                        </svg>
+                        <div>
+                            <div class="display-4 fw-semibold lh-1">31°</div>
+                            <div class="fw-medium text-body-secondary">Partly cloudy · Feels like 36°</div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-5 g-1 text-center small">
+                        <div class="col"><div class="py-2 bg-warning-subtle text-warning-emphasis rounded-4"><div class="fw-semibold">Now</div><div class="fs-5 fw-semibold">31°</div><div>10%</div></div></div>
+                        <div class="col"><div class="py-2"><div class="text-body-secondary">12 PM</div><div class="fs-5 fw-semibold">33°</div><div class="text-body-secondary">10%</div></div></div>
+                        <div class="col"><div class="py-2"><div class="text-body-secondary">3 PM</div><div class="fs-5 fw-semibold">32°</div><div class="text-primary">40%</div></div></div>
+                        <div class="col"><div class="py-2"><div class="text-body-secondary">6 PM</div><div class="fs-5 fw-semibold">28°</div><div class="text-primary">60%</div></div></div>
+                        <div class="col"><div class="py-2"><div class="text-body-secondary">9 PM</div><div class="fs-5 fw-semibold">26°</div><div class="text-body-secondary">20%</div></div></div>
+                    </div>
+                    <div class="row row-cols-3 g-2 text-center">
+                        <div class="col"><div class="py-2 bg-body-secondary rounded-4"><div class="small text-body-secondary">High / Low</div><div class="fw-semibold">33° / 25°</div></div></div>
+                        <div class="col"><div class="py-2 bg-body-secondary rounded-4"><div class="small text-body-secondary">UV index</div><div class="fw-semibold text-danger">9 High</div></div></div>
+                        <div class="col"><div class="py-2 bg-body-secondary rounded-4"><div class="small text-body-secondary">Humidity</div><div class="fw-semibold">74%</div></div></div>
+                    </div>
+                    <div class="small text-primary-emphasis bg-primary-subtle rounded-4 px-3 py-2">Rain likely after 3 PM — bring an umbrella.</div>
                 </div>
             </div>
         </div>
@@ -75,117 +123,150 @@
         <!-- Row 2 -->
         <div class="row g-3 flex-fill">
 
-            <!-- Weather -->
-            <div class="col-12 col-md-6 col-xl-5">
-                <div class="h-100 p-4 bg-white rounded-5 shadow-sm d-flex flex-column justify-content-between gap-4">
-                    <div class="d-flex align-items-center gap-2">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                        <span class="fs-5 fw-medium">Malvar, Batangas</span>
-                        <span class="fs-5 text-body-secondary">Philippines</span>
+            <!-- Today's agenda -->
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="h-100 p-4 bg-body rounded-5 shadow-sm d-flex flex-column gap-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="small text-uppercase text-body-secondary fw-semibold">Today's agenda</div>
+                        <span class="badge rounded-pill bg-body-secondary text-body-secondary fw-medium">4 events</span>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent px-0 d-flex gap-3 opacity-50">
+                            <span class="small fw-semibold" style="width: 4.5rem;">8:00 AM</span>
+                            <span class="border-start border-3"></span>
+                            <div><div class="fw-semibold text-decoration-line-through">Web Development</div><div class="small text-body-secondary">Room 304 · Lecture</div></div>
+                        </li>
+                        <li class="list-group-item bg-transparent px-0 d-flex gap-3">
+                            <span class="small fw-semibold" style="width: 4.5rem;">10:00 AM</span>
+                            <span class="border-start border-3 border-warning"></span>
+                            <div class="flex-fill"><div class="fw-semibold">Networking Lab</div><div class="small text-body-secondary">Lab 2 · Bring laptop</div></div>
+                            <span class="align-self-center badge rounded-pill text-bg-warning">Next</span>
+                        </li>
+                        <li class="list-group-item bg-transparent px-0 d-flex gap-3">
+                            <span class="small fw-semibold" style="width: 4.5rem;">2:00 PM</span>
+                            <span class="border-start border-3"></span>
+                            <div><div class="fw-semibold">Capstone group study</div><div class="small text-body-secondary">Library · Chapter 4</div></div>
+                        </li>
+                        <li class="list-group-item bg-transparent px-0 d-flex gap-3">
+                            <span class="small fw-semibold" style="width: 4.5rem;">7:00 PM</span>
+                            <span class="border-start border-3"></span>
+                            <div><div class="fw-semibold">Gym</div><div class="small text-body-secondary">Leg day · 1 hr</div></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Activity & nutrition -->
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="h-100 p-4 bg-body rounded-5 shadow-sm d-flex flex-column justify-content-between gap-4">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="small text-uppercase text-body-secondary fw-semibold">Activity</div>
+                            <span class="badge rounded-pill bg-success-subtle text-success-emphasis">93% of goal</span>
+                        </div>
+                        <div class="d-flex align-items-baseline gap-2 mb-2">
+                            <span class="display-6 fw-semibold lh-1">9,320</span>
+                            <span class="text-body-secondary">/ 10,000 steps</span>
+                        </div>
+                        <div class="progress bg-body-secondary" style="height: 8px;">
+                            <div class="progress-bar bg-success" style="width: 93.2%;"></div>
+                        </div>
+                        <div class="small text-body-secondary mt-2">680 steps left — about a 7-minute walk</div>
+                    </div>
+                    <div class="row row-cols-3 g-2">
+                        <div class="col"><div class="p-3 bg-body-secondary rounded-4"><div class="fw-semibold">6.8 km</div><div class="small text-body-secondary">Distance</div></div></div>
+                        <div class="col"><div class="p-3 bg-body-secondary rounded-4"><div class="fw-semibold">48 min</div><div class="small text-body-secondary">Active</div></div></div>
+                        <div class="col"><div class="p-3 bg-body-secondary rounded-4"><div class="fw-semibold">412</div><div class="small text-body-secondary">kcal burned</div></div></div>
                     </div>
                     <div>
-                        <div class="d-flex align-items-center gap-3">
-                            <svg width="96" height="96" viewBox="0 0 96 96" fill="none">
-                                <circle cx="38" cy="38" r="16" class="text-warning" fill="currentColor"/>
-                                <g class="text-warning" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M38 10v6M10 38h6M18 18l4 4M58 18l-4 4M18 58l4-4"/></g>
-                                <path d="M30 76H70a12 12 0 0 0 0-24a18 18 0 0 0-34-4a14 14 0 0 0-6 28z" style="color: var(--bs-gray-300);" fill="currentColor"/>
-                            </svg>
-                            <span class="display-1 fw-semibold lh-1">31°</span>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-warning"><path d="M12 2c.6 3.6 5.5 5.6 5.5 10.2A5.5 5.5 0 0 1 6.5 13c0-2 .9-3.4 2.1-4.6.2 1.4.8 2.2 1.6 2.6C10 8 10.6 4.8 12 2z"/></svg>
+                                <span class="small text-uppercase text-body-secondary fw-semibold">Nutrition today</span>
+                            </div>
+                            <div class="small"><span class="fw-semibold">1,640</span> <span class="text-body-secondary">/ 2,000 kcal</span></div>
                         </div>
-                        <div class="fs-5 fw-medium text-body-secondary mt-2">Partly Cloudy</div>
-                    </div>
-                    <div class="d-flex justify-content-between bg-body-secondary rounded-4 px-4 py-3">
-                        <div><div class="small text-body-secondary">High</div><div class="fs-5 fw-semibold">33°</div></div>
-                        <div><div class="small text-body-secondary">Low</div><div class="fs-5 fw-semibold">25°</div></div>
-                        <div><div class="small text-body-secondary">Humidity</div><div class="fs-5 fw-semibold">74%</div></div>
+                        <div class="row row-cols-3 g-3">
+                            <div class="col">
+                                <div class="small fw-medium">Protein</div>
+                                <div class="progress bg-body-secondary my-1" style="height: 5px;"><div class="progress-bar bg-primary" style="width: 82%;"></div></div>
+                                <div class="small text-body-secondary">98 / 120 g</div>
+                            </div>
+                            <div class="col">
+                                <div class="small fw-medium">Carbs</div>
+                                <div class="progress bg-body-secondary my-1" style="height: 5px;"><div class="progress-bar bg-success" style="width: 76%;"></div></div>
+                                <div class="small text-body-secondary">190 / 250 g</div>
+                            </div>
+                            <div class="col">
+                                <div class="small fw-medium">Fat</div>
+                                <div class="progress bg-body-secondary my-1" style="height: 5px;"><div class="progress-bar bg-warning" style="width: 80%;"></div></div>
+                                <div class="small text-body-secondary">52 / 65 g</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-xl-7">
-                <div class="row gx-0 gy-0 gap-3 flex-column flex-nowrap h-100">
-                    <div class="col">
-                        <div class="row gx-3 gy-0 row-gap-3 row-gap-sm-0 h-100">
-
-                            <!-- Steps -->
-                            <div class="col-12 col-sm-6">
-                                <div class="h-100 p-4 bg-white rounded-5 shadow-sm d-flex flex-column justify-content-between gap-4">
-                                    <div class="small text-uppercase text-body-secondary fw-medium">Steps</div>
-                                    <div>
-                                        <div class="d-flex align-items-baseline justify-content-between">
-                                            <span class="display-5 fw-semibold lh-1">9,320</span>
-                                            <span class="fs-5 fw-semibold text-success-emphasis">93%</span>
-                                        </div>
-                                        <div class="progress bg-dark bg-opacity-10 my-2" style="height: 8px;">
-                                            <div class="progress-bar bg-success" style="width: 93.2%;"></div>
-                                        </div>
-                                        <div class="small text-body-secondary">Goal 10,000</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Total calories this week -->
-                            <div class="col-12 col-sm-6">
-                                <div class="h-100 p-4 bg-white rounded-5 shadow-sm d-flex flex-column justify-content-between gap-4">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <div>
-                                            <div class="small text-uppercase text-body-secondary fw-medium">Total this week</div>
-                                            <div><span class="display-6 fw-semibold">13,000</span> <span class="text-body-secondary fw-medium">kcal</span></div>
-                                            <div class="small text-body-secondary">Goal: 14,000 kcal</div>
-                                        </div>
-                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="text-warning-emphasis"><path d="M12 2c.6 3.6 5.5 5.6 5.5 10.2A5.5 5.5 0 0 1 6.5 13c0-2 .9-3.4 2.1-4.6.2 1.4.8 2.2 1.6 2.6C10 8 10.6 4.8 12 2z"/></svg>
-                                    </div>
-                                    <div class="row row-cols-3 g-3">
-                                        <div class="col">
-                                            <div class="small fw-medium">Protein</div>
-                                            <div class="progress bg-dark bg-opacity-10 my-1" style="height: 5px;"><div class="progress-bar bg-primary" style="width: 100%;"></div></div>
-                                            <div class="small text-body-secondary">700/700g</div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="small fw-medium">Carbs</div>
-                                            <div class="progress bg-dark bg-opacity-10 my-1" style="height: 5px;"><div class="progress-bar bg-success" style="width: 91%;"></div></div>
-                                            <div class="small text-body-secondary">1605/1765g</div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="small fw-medium">Fat</div>
-                                            <div class="progress bg-dark bg-opacity-10 my-1" style="height: 5px;"><div class="progress-bar bg-warning" style="width: 91%;"></div></div>
-                                            <div class="small text-body-secondary">420/460g</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <!-- To-do -->
+            <div class="col-12 col-xl-4">
+                <div class="h-100 p-4 bg-body rounded-5 shadow-sm d-flex flex-column gap-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="small text-uppercase text-body-secondary fw-semibold">To-do</div>
+                        <span class="small text-body-secondary"><span class="fw-semibold text-body">2</span> of 5 done</span>
                     </div>
-
-                    <!-- Reminder -->
-                    <div class="col">
-                        <div class="h-100 p-4 bg-white rounded-5 shadow-sm d-flex flex-column justify-content-between gap-3">
-                            <div class="small text-uppercase text-body-secondary fw-medium">Reminder</div>
-                            <div>
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning-subtle text-warning-emphasis rounded-4 text-center px-3 py-2 lh-1">
-                                        <div class="small text-uppercase fw-medium">Mon</div>
-                                        <div class="fs-4 fw-semibold">12</div>
-                                    </div>
-                                    <div>
-                                        <div class="fs-5 fw-semibold">Capstone project deadline</div>
-                                        <div class="small text-body-secondary">5:00 PM · Submit final documentation</div>
-                                    </div>
-                                    <span class="ms-auto badge rounded-pill text-bg-warning">In 2 days</span>
-                                </div>
-                                <hr class="my-3 opacity-25">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-body-secondary text-body-secondary rounded-4 text-center px-3 py-2 lh-1">
-                                        <div class="small text-uppercase fw-medium">Tue</div>
-                                        <div class="fs-4 fw-semibold">13</div>
-                                    </div>
-                                    <div>
-                                        <div class="fs-5 fw-semibold">Team meeting</div>
-                                        <div class="small text-body-secondary">2:00 PM · Weekly sprint review</div>
-                                    </div>
-                                    <span class="ms-auto badge rounded-pill text-bg-light border">In 3 days</span>
-                                </div>
+                    <div class="progress bg-body-secondary" style="height: 6px;">
+                        <div class="progress-bar bg-success" style="width: 40%;"></div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent px-0 d-flex align-items-center gap-3">
+                            <input class="form-check-input m-0" type="checkbox" id="t1" checked>
+                            <label class="flex-fill text-body-secondary text-decoration-line-through" for="t1">Submit ATY_01 bento layout</label>
+                            <span class="badge rounded-pill bg-body-secondary text-body-secondary">Web Dev</span>
+                        </li>
+                        <li class="list-group-item bg-transparent px-0 d-flex align-items-center gap-3">
+                            <input class="form-check-input m-0" type="checkbox" id="t2" checked>
+                            <label class="flex-fill text-body-secondary text-decoration-line-through" for="t2">Review subnetting notes</label>
+                            <span class="badge rounded-pill bg-body-secondary text-body-secondary">Networking</span>
+                        </li>
+                        <li class="list-group-item bg-transparent px-0 d-flex align-items-center gap-3">
+                            <input class="form-check-input m-0" type="checkbox" id="t3">
+                            <label class="flex-fill" for="t3">Draft capstone chapter 4</label>
+                            <span class="badge rounded-pill text-bg-warning">Due Mon</span>
+                        </li>
+                        <li class="list-group-item bg-transparent px-0 d-flex align-items-center gap-3">
+                            <input class="form-check-input m-0" type="checkbox" id="t4">
+                            <label class="flex-fill" for="t4">Prepare sprint review slides</label>
+                            <span class="badge rounded-pill bg-body-secondary text-body-secondary">Tue</span>
+                        </li>
+                        <li class="list-group-item bg-transparent px-0 d-flex align-items-center gap-3">
+                            <input class="form-check-input m-0" type="checkbox" id="t5">
+                            <label class="flex-fill" for="t5">Drink 8 glasses of water</label>
+                            <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">5 / 8</span>
+                        </li>
+                    </ul>
+                    <div class="mt-auto">
+                        <div class="small text-uppercase text-body-secondary fw-semibold mb-2">Upcoming</div>
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="bg-warning-subtle text-warning-emphasis rounded-4 text-center px-3 py-2 lh-1">
+                                <div class="small text-uppercase fw-medium">Mon</div>
+                                <div class="fs-5 fw-semibold">12</div>
                             </div>
+                            <div>
+                                <div class="fw-semibold">Capstone deadline</div>
+                                <div class="small text-body-secondary">5:00 PM · Final documentation</div>
+                            </div>
+                            <span class="ms-auto badge rounded-pill text-bg-warning">In 2 days</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-body-secondary text-body-secondary rounded-4 text-center px-3 py-2 lh-1">
+                                <div class="small text-uppercase fw-medium">Tue</div>
+                                <div class="fs-5 fw-semibold">13</div>
+                            </div>
+                            <div>
+                                <div class="fw-semibold">Team meeting</div>
+                                <div class="small text-body-secondary">2:00 PM · Sprint review</div>
+                            </div>
+                            <span class="ms-auto badge rounded-pill bg-body-secondary text-body-secondary">In 3 days</span>
                         </div>
                     </div>
                 </div>
