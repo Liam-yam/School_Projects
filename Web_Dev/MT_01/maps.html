@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valogall | Maps</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/valorant" rel="stylesheet">
+
+  <style>
+    body { font-family: 'VALORANT', sans-serif; }
+    .hover-lift { transition: transform .2s ease, box-shadow .2s ease; }
+    .hover-lift:hover, .hover-lift:focus-within { transform: translateY(-.25rem); box-shadow: var(--bs-box-shadow-lg); }
+  </style>
+</head>
+
+<body class="bg-gradient min-vh-100" style="background-color: #111823;">
+  <div id="loader" class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-gradient z-3" style="background-color: #111823;">
+    <div class="spinner-grow text-danger" style="width: 3rem; height: 3rem;" role="status">
+      <span class="visually-hidden">Loading…</span>
+    </div>
+  </div>
+
+  <nav class="navbar bg-danger sticky-top shadow">
+    <div class="container">
+      <a class="navbar-brand fs-3 text-white" href="index.html">VALOGALL</a>
+      <input id="search" class="form-control rounded-pill w-auto" type="search" placeholder="Search maps" oninput="searchItems()">
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <a href="index.html" class="btn btn-outline-light rounded-pill px-3" title="Back to home">
+        <i class="bi bi-arrow-left"></i> Back
+      </a>
+      <span class="badge text-bg-danger rounded-pill fs-5 px-4 py-2">Maps</span>
+    </div>
+
+    <div class="row g-5" id="parent"></div>
+
+    <nav class="d-flex justify-content-center mt-5" aria-label="Maps pages">
+      <ul class="pagination" id="pagination"></ul>
+    </nav>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+  <script>
+    var elParent = document.getElementById("parent");
+    var elPagination = document.getElementById("pagination");
+    var elSearch = document.getElementById("search");
+    var elLoader = document.getElementById("loader");
+
+    var maps = [];
+    var search = '';
+    var page = 1;
+    var perPage = 3;
+
+    const getMaps = async () => {
+      try {
+        const response = await fetch('https://valorant-api.com/v1/maps');
+        const json = await response.json();
+        var data = json.data;
+
+        var names = [];
+        for (var i = 0; i < data.length; i++) {
+          var name = data[i].displayName;
+          if (names.includes(name) == false) {
+            names.push(name);
+            maps.push(data[i]);
+          }
+        }
+
+        render();
+      } catch (error) {
+        elParent.innerHTML = `<div class="col-12"><div class="alert alert-danger text-center">Failed to load maps. Please check your connection and try again.</div></div>`;
+      }
+      elLoader.classList.add('d-none');
+    }
+
+    function render() {
+      var list = [];
+      for (var i = 0; i < maps.length; i++) {
+        var name = maps[i].displayName.toLowerCase();
+        if (name.includes(search)) {
+          list.push(maps[i]);
+        }
+      }
+
+      if (list.length == 0) {
+        elParent.innerHTML = `<h3 class="text-center text-body-secondary py-5">Search not found</h3>`;
+        elPagination.innerHTML = '';
+        return;
+      }
+
+      var totalPages = Math.ceil(list.length / perPage);
+      var start = (page - 1) * perPage;
+      var end = start + perPage;
+      if (end > list.length) {
+        end = list.length;
+      }
+
+      var html = '';
+      for (var i = start; i < end; i++) {
+        var map = list[i];
+
+        var name = map.displayName;
+        var image = map.splash;
+        var sites = map.tacticalDescription;
+        var coordinates = map.coordinates;
+
+        var sitesBadge = '';
+        if (sites != null) {
+          sitesBadge = `<span class="badge text-bg-danger rounded-pill">`+sites+`</span>`;
+        }
+
+        var coordinatesText = '';
+        if (coordinates != null) {
+          coordinatesText = `<small class="text-white-50"><i class="bi bi-geo-alt"></i> `+coordinates+`</small>`;
+        }
+
+        html += `
+          <div class="col-12">
+            <div class="card hover-lift border-0 rounded-4 shadow-lg overflow-hidden">
+              <div class="ratio ratio-21x9">
+                <img class="object-fit-cover" src="`+image+`" alt="`+name+`">
+              </div>
+              <div class="card-img-overlay d-flex align-items-end p-3">
+                <div class="bg-dark bg-opacity-75 rounded-3 px-3 py-2">
+                  <h2 class="text-white m-0">`+name+`</h2>
+                  <div class="d-flex flex-wrap align-items-center gap-2 mt-1">
+                    `+sitesBadge+`
+                    `+coordinatesText+`
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      elParent.innerHTML = html;
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      var html = pageItem('Previous', page - 1, page == 1, false);
+
+      for (var i = 1; i <= totalPages; i++) {
+        if (i == 1 || i == totalPages || (i >= page - 1 && i <= page + 1)) {
+          html += pageItem(i, i, false, i == page);
+        } else if (i == page - 2 || i == page + 2) {
+          html += `<li class="page-item disabled"><span class="page-link">…</span></li>`;
+        }
+      }
+
+      html += pageItem('Next', page + 1, page == totalPages, false);
+      elPagination.innerHTML = html;
+    }
+
+    function pageItem(label, target, disabled, active) {
+      var classes = 'page-item';
+      if (disabled) {
+        classes += ' disabled';
+      }
+      if (active) {
+        classes += ' active';
+      }
+
+      return `<li class="`+classes+`"><a class="page-link" href="#" onclick="goToPage(`+target+`); return false;">`+label+`</a></li>`;
+    }
+
+    function goToPage(target) {
+      page = target;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function searchItems() {
+      search = elSearch.value.trim().toLowerCase();
+      page = 1;
+      render();
+    }
+
+    getMaps();
+  </script>
+</body>
+
+</html>
