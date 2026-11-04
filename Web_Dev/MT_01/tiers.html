@@ -12,6 +12,7 @@
 
   <style>
     body { font-family: 'VALORANT', sans-serif; }
+    .bg-text { font-size: 17vw; line-height: 1; }
     .hover-lift { transition: transform .2s ease, box-shadow .2s ease; }
     .hover-lift:hover, .hover-lift:focus-within { transform: translateY(-.25rem); box-shadow: var(--bs-box-shadow-lg); }
   </style>
@@ -24,9 +25,12 @@
     </div>
   </div>
 
-  <nav class="navbar bg-danger sticky-top shadow">
+  <div class="bg-text position-fixed top-50 start-50 translate-middle mt-4 text-danger text-nowrap opacity-25 pe-none user-select-none z-n1">VALORANT</div>
+  <img class="position-fixed bottom-0 start-0 m-4 pe-none z-n1" src="assets/riot-logo.png" alt="Riot Games" width="130">
+
+  <nav class="navbar sticky-top border-bottom border-danger border-2" style="background-color: #151c28;">
     <div class="container">
-      <a class="navbar-brand fs-3 text-white" href="index.html">VALOGALL</a>
+      <a class="navbar-brand fs-3 text-danger" href="index.html">VALOGALL</a>
       <input id="search" class="form-control rounded-pill w-auto" type="search" placeholder="Search tiers" oninput="searchItems()">
     </div>
   </nav>
@@ -122,20 +126,20 @@
         var division = shown[d];
         var color = toColor(getRank(division + ' 1').color);
 
-        grid += `<th class="small fw-normal" style="color: `+color+`;">`+division+`</th>`;
+        grid += `<th class="fw-normal" style="color: `+color+`;">`+division+`</th>`;
       }
       grid += `</tr></thead><tbody>`;
 
       for (var l = 0; l < levels.length; l++) {
         var level = levels[l];
-        grid += `<tr><td class="text-body-secondary">`+level+`</td>`;
+        grid += `<tr><td class="text-body-secondary fs-4">`+level+`</td>`;
 
         for (var d = 0; d < shown.length; d++) {
           var rank = getRank(shown[d] + ' ' + level);
           var name = rank.tierName;
           var icon = rank.largeIcon;
 
-          grid += `<td><img class="hover-lift shadow-none" src="`+icon+`" alt="`+name+`" title="`+name+`" width="70"></td>`;
+          grid += `<td><img class="hover-lift shadow-none" src="`+icon+`" alt="`+name+`" title="`+name+`" width="105"></td>`;
         }
         grid += `</tr>`;
       }
@@ -145,35 +149,31 @@
       if (shown.length > 0) {
         var gridSize = 'col-12';
         if (showRadiant) {
-          gridSize = 'col-lg-10';
+          gridSize = 'col-12 col-xxl-10';
         }
         gridColumn = `
           <div class="`+gridSize+` table-responsive">
-            <table class="table table-borderless text-center align-middle mb-0">`+grid+`</table>
+            <table class="table table-borderless text-center align-middle mb-0" style="--bs-table-bg: transparent;">`+grid+`</table>
           </div>
         `;
       }
 
       var radiantColumn = '';
       if (showRadiant) {
-        var radiantSize = 'col-12';
-        if (shown.length > 0) {
-          radiantSize = 'col-lg-2';
-        }
         var radiantName = radiant.tierName;
         var radiantIcon = radiant.largeIcon;
         var radiantColor = toColor(radiant.color);
 
         radiantColumn = `
-          <div class="`+radiantSize+` text-center">
-            <img class="img-fluid w-50 mb-2 hover-lift shadow-none" src="`+radiantIcon+`" alt="`+radiantName+`">
+          <div class="col-6 col-md-3 col-xxl-2 mx-auto text-center">
+            <img class="img-fluid w-100 mb-2 hover-lift shadow-none" src="`+radiantIcon+`" alt="`+radiantName+`">
             <h3 class="m-0" style="color: `+radiantColor+`;">`+radiantName+`</h3>
           </div>
         `;
       }
 
       elParent.innerHTML = `
-        <div class="bg-dark border border-danger border-3 rounded-4 shadow-lg p-4">
+        <div class="bg-dark bg-opacity-50 border border-danger border-3 rounded-4 shadow-lg p-4">
           <div class="row align-items-center g-4">
             `+gridColumn+`
             `+radiantColumn+`

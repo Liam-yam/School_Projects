@@ -12,6 +12,7 @@
 
   <style>
     body { font-family: 'VALORANT', sans-serif; }
+    .bg-text { font-size: 17vw; line-height: 1; }
     .hover-lift { transition: transform .2s ease, box-shadow .2s ease; }
     .hover-lift:hover, .hover-lift:focus-within { transform: translateY(-.25rem); box-shadow: var(--bs-box-shadow-lg); }
   </style>
@@ -24,9 +25,12 @@
     </div>
   </div>
 
-  <nav class="navbar bg-danger sticky-top shadow">
+  <div class="bg-text position-fixed top-50 start-50 translate-middle mt-4 text-danger text-nowrap opacity-25 pe-none user-select-none z-n1">VALORANT</div>
+  <img class="position-fixed bottom-0 start-0 m-4 pe-none z-n1" src="assets/riot-logo.png" alt="Riot Games" width="130">
+
+  <nav class="navbar sticky-top border-bottom border-danger border-2" style="background-color: #151c28;">
     <div class="container">
-      <a class="navbar-brand fs-3 text-white" href="index.html">VALOGALL</a>
+      <a class="navbar-brand fs-3 text-danger" href="index.html">VALOGALL</a>
       <input id="search" class="form-control rounded-pill w-auto" type="search" placeholder="Search sprays" oninput="searchItems()">
     </div>
   </nav>

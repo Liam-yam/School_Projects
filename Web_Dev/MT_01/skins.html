@@ -12,6 +12,7 @@
 
   <style>
     body { font-family: 'VALORANT', sans-serif; }
+    .bg-text { font-size: 17vw; line-height: 1; }
     .hover-lift { transition: transform .2s ease, box-shadow .2s ease; }
     .hover-lift:hover, .hover-lift:focus-within { transform: translateY(-.25rem); box-shadow: var(--bs-box-shadow-lg); }
   </style>
@@ -24,9 +25,12 @@
     </div>
   </div>
 
-  <nav class="navbar bg-danger sticky-top shadow">
+  <div class="bg-text position-fixed top-50 start-50 translate-middle mt-4 text-danger text-nowrap opacity-25 pe-none user-select-none z-n1">VALORANT</div>
+  <img class="position-fixed bottom-0 start-0 m-4 pe-none z-n1" src="assets/riot-logo.png" alt="Riot Games" width="130">
+
+  <nav class="navbar sticky-top border-bottom border-danger border-2" style="background-color: #151c28;">
     <div class="container">
-      <a class="navbar-brand fs-3 text-white" href="index.html">VALOGALL</a>
+      <a class="navbar-brand fs-3 text-danger" href="index.html">VALOGALL</a>
       <input id="search" class="form-control rounded-pill w-auto" type="search" placeholder="Search skins" oninput="searchItems()">
     </div>
   </nav>
@@ -68,6 +72,7 @@
     var elLoader = document.getElementById("loader");
 
     var skins = [];
+    var tiers = [];
     var guns = ['All'];
     var selectedGun = 'All';
     var search = '';
@@ -79,6 +84,10 @@
         const response = await fetch('https://valorant-api.com/v1/weapons');
         const json = await response.json();
         var weapons = json.data;
+
+        const tierResponse = await fetch('https://valorant-api.com/v1/contenttiers');
+        const tierJson = await tierResponse.json();
+        tiers = tierJson.data;
 
         for (var w = 0; w < weapons.length; w++) {
           var gunName = weapons[w].displayName;
@@ -99,7 +108,7 @@
             }
 
             if (image != null && isDefault == false) {
-              skins.push({ name: skinName, gun: gunName, image: image });
+              skins.push({ name: skinName, gun: gunName, image: image, tier: gunSkins[s].contentTierUuid });
             }
           }
         }
@@ -144,9 +153,24 @@
         var gun = skin.gun;
         var image = skin.image;
 
+        var cardClass = 'bg-gradient';
+        var cardStyle = '';
+        var tierBadge = '';
+        for (var t = 0; t < tiers.length; t++) {
+          if (tiers[t].uuid == skin.tier) {
+            var tierName = tiers[t].devName;
+            var softColor = '#' + tiers[t].highlightColor;
+            var solidColor = '#' + tiers[t].highlightColor.slice(0, 6);
+
+            cardClass = '';
+            cardStyle = 'background-image: linear-gradient(135deg, ' + softColor + ', transparent);';
+            tierBadge = `<span class="badge text-dark rounded-pill" style="background-color: `+solidColor+`;">`+tierName+`</span>`;
+          }
+        }
+
         html += `
           <div class="col-12">
-            <div class="card hover-lift bg-dark bg-gradient border-0 rounded-4 shadow-lg">
+            <div class="card hover-lift bg-dark `+cardClass+` border-0 rounded-4 shadow-lg" style="`+cardStyle+`">
               <div class="row g-0 align-items-center">
                 <div class="col-md-5">
                   <div class="ratio ratio-21x9">
@@ -157,6 +181,7 @@
                   <div class="card-body">
                     <h4 class="card-title text-white">`+name+`</h4>
                     <span class="badge text-bg-danger rounded-pill">`+gun+`</span>
+                    `+tierBadge+`
                   </div>
                 </div>
               </div>

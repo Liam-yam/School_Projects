@@ -12,6 +12,7 @@
 
   <style>
     body { font-family: 'VALORANT', sans-serif; }
+    .bg-text { font-size: 17vw; line-height: 1; }
     .hover-lift { transition: transform .2s ease, box-shadow .2s ease; }
     .hover-lift:hover, .hover-lift:focus-within { transform: translateY(-.25rem); box-shadow: var(--bs-box-shadow-lg); }
   </style>
@@ -24,14 +25,16 @@
     </div>
   </div>
 
-  <nav class="navbar bg-danger sticky-top shadow">
+  <div class="bg-text position-fixed top-50 start-50 translate-middle mt-4 text-danger text-nowrap opacity-25 pe-none user-select-none z-n1">VALORANT</div>
+  <img class="position-fixed bottom-0 start-0 m-4 pe-none z-n1" src="assets/riot-logo.png" alt="Riot Games" width="130">
+
+  <nav class="navbar sticky-top border-bottom border-danger border-2" style="background-color: #151c28;">
     <div class="container">
-      <a class="navbar-brand fs-3 text-white" href="index.html">VALOGALL</a>
-      <input id="search" class="form-control rounded-pill w-auto" type="search" placeholder="Search" oninput="searchItems()">
+      <a class="navbar-brand fs-3 text-danger" href="index.html">VALOGALL</a>
     </div>
   </nav>
 
-  <div class="container py-5">
+  <div class="container py-4" style="max-width: max(1320px, 178vh - 270px);">
     <div id="parent"></div>
   </div>
 
@@ -41,7 +44,6 @@
 
   <script>
     var elParent = document.getElementById("parent");
-    var elSearch = document.getElementById("search");
     var elLoader = document.getElementById("loader");
 
     var rows = [
@@ -58,7 +60,6 @@
         { name: 'Tiers', link: 'tiers.html', color: 'warning', fit: 'contain', image: '' }
       ]
     ];
-    var search = '';
 
     const getImages = async () => {
       try {
@@ -134,38 +135,27 @@
             padding = 'pt-3 pb-5 px-5';
           }
 
-          if (name.toLowerCase().includes(search)) {
-            rowHtml += `
-              <div class="col-12 col-md-4">
-                <div class="card hover-lift text-bg-`+color+` bg-gradient border-0 rounded-4 shadow-lg overflow-hidden">
-                  <div class="ratio ratio-16x9">
-                    <img class="object-fit-`+fit+` `+padding+`" src="`+image+`" alt="`+name+`">
-                  </div>
-                  <div class="card-img-overlay d-flex align-items-end">
-                    <a href="`+link+`" class="stretched-link link-light text-decoration-none">
-                      <h2 class="m-0 border-start border-4 border-light ps-3">`+name+`</h2>
-                    </a>
-                  </div>
+          rowHtml += `
+            <div class="col-12 col-md-4">
+              <div class="card hover-lift bg-dark border-0 rounded-4 shadow-lg overflow-hidden"
+                style="background-image: linear-gradient(135deg, rgba(var(--bs-`+color+`-rgb), .55), rgba(var(--bs-`+color+`-rgb), .1));">
+                <div class="ratio ratio-16x9">
+                  <img class="object-fit-`+fit+` `+padding+`" src="`+image+`" alt="`+name+`">
+                </div>
+                <div class="card-img-overlay d-flex align-items-end">
+                  <a href="`+link+`" class="stretched-link link-light text-decoration-none">
+                    <h2 class="m-0 border-start border-4 border-light ps-3">`+name+`</h2>
+                  </a>
                 </div>
               </div>
-            `;
-          }
+            </div>
+          `;
         }
 
-        if (rowHtml != '') {
-          html += `<div class="row justify-content-center g-4 mb-4">` + rowHtml + `</div>`;
-        }
+        html += `<div class="row justify-content-center g-4 mb-4">` + rowHtml + `</div>`;
       }
 
-      if (html == '') {
-        html = `<h3 class="text-center text-body-secondary py-5">Search not found</h3>`;
-      }
       elParent.innerHTML = html;
-    }
-
-    function searchItems() {
-      search = elSearch.value.trim().toLowerCase();
-      render();
     }
 
     getImages();
