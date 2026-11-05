@@ -74,6 +74,7 @@
     var agents = [];
     var roles = ['All'];
     var perPage = 9;
+    var search = '';
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -82,13 +83,6 @@
     if (selectedRole == null) {
       selectedRole = 'All';
     }
-
-    var search = urlParams.get('search');
-    if (search == null) {
-      search = '';
-    }
-    elSearch.value = search;
-    search = search.trim().toLowerCase();
 
     var page = parseInt(urlParams.get('page'));
     if (isNaN(page) || page < 1) {

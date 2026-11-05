@@ -74,10 +74,21 @@
     var skins = [];
     var tiers = [];
     var guns = ['All'];
-    var selectedGun = 'All';
-    var search = '';
-    var page = 1;
     var perPage = 5;
+    var search = '';
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    var selectedGun = urlParams.get('gun');
+    if (selectedGun == null) {
+      selectedGun = 'All';
+    }
+
+    var page = parseInt(urlParams.get('page'));
+    if (isNaN(page) || page < 1) {
+      page = 1;
+    }
 
     const getSkins = async () => {
       try {
@@ -108,7 +119,7 @@
             }
 
             if (image != null && isDefault == false) {
-              skins.push({ name: skinName, gun: gunName, image: image, tier: gunSkins[s].contentTierUuid });
+              skins.push({ id: gunSkins[s].uuid, name: skinName, gun: gunName, image: image, tier: gunSkins[s].contentTierUuid });
             }
           }
         }
@@ -139,6 +150,10 @@
       }
 
       var totalPages = Math.ceil(list.length / perPage);
+      if (page > totalPages) {
+        page = totalPages;
+      }
+
       var start = (page - 1) * perPage;
       var end = start + perPage;
       if (end > list.length) {
@@ -149,6 +164,7 @@
       for (var i = start; i < end; i++) {
         var skin = list[i];
 
+        var id = skin.id;
         var name = skin.name;
         var gun = skin.gun;
         var image = skin.image;
@@ -179,7 +195,9 @@
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h4 class="card-title text-white">`+name+`</h4>
+                    <a href="inspect.html?id=`+id+`&weapon=`+gun+`&page=`+page+`&gun=`+selectedGun+`" class="stretched-link text-decoration-none">
+                      <h4 class="card-title text-white">`+name+`</h4>
+                    </a>
                     <span class="badge text-bg-danger rounded-pill">`+gun+`</span>
                     `+tierBadge+`
                   </div>
